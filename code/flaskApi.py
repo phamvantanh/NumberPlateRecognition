@@ -35,7 +35,6 @@ def index():
 @cross_origin()
 def _hello_world():
     start = time.time()
-
     image = request.form.get('image')
     image = Image.open(BytesIO(base64.b64decode(image)))
     image.save('image1.jpg', 'JPEG')
@@ -57,8 +56,8 @@ def _hello_world():
         im_bytes = im_arr.tobytes()
         img = base64.b64encode(im_bytes)
         end = time.time()
-        #if len(string) != 10 and len(string) != 12:
-            #string = None
+        # if len(string) != 10 and len(string) != 12:
+        # string = None
         return_data = {
             'bsx': string,
             'image': img.decode('utf-8'),
@@ -68,5 +67,5 @@ def _hello_world():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='192.168.137.236', port=my_port)
-    # app.run(debug=True, host='0.0.0.0', port=my_port)
+    # app.run(debug=True, host='192.168.137.236', port=my_port)
+    app.run(debug=True, host='0.0.0.0', port=my_port)

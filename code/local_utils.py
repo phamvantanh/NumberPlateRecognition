@@ -207,7 +207,7 @@ def detect_lp(model, I, max_dim, lp_threshold):
     # Tiến hành detect biển số bằng Wpod-net pretrain
     Yr = model.predict(T)
     
-    print("Yr shape before:", Yr.shape)
+    # print("Yr shape before:", Yr.shape)
     # Remove các chiều = 1 của Yr
     Yr = np.squeeze(Yr)
     #print("Yr shape: ", Yr)

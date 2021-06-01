@@ -1,11 +1,11 @@
+from os.path import splitext
+
 import cv2
 import imutils
 import numpy as np
-from os.path import splitext
-from local_utils import detect_lp
 from keras.models import model_from_json
-from PIL import Image
-import tensorflow as tf
+from local_utils import detect_lp
+
 
 class Model:
     # Hàm key lúc sort
@@ -220,10 +220,11 @@ def predict(path):
     model_svm = cv2.ml.SVM_load('model_svmNew.xml')
     model = Model()
     wpod_net = model.load_model("wpod-net.json")
-    print(type(wpod_net))
+    # print(type(wpod_net))
 
-    img_path = path
-    img = cv2.imread(img_path)
+    # img_path = path
+    # img = cv2.imread(img_path)
+    img = path
     place_img, cor = model.get_plate(img, wpod_net)
     assert place_img is not None
     clone_img = place_img[0].copy()

@@ -16,6 +16,11 @@ License Plate Recognition can be applied with Student ID Card Recognition to bui
 
 - Number plate recognition with [SVM Training Module](https://course.ccs.neu.edu/cs5100f11/resources/jakkula.pdf)
 
+## Dataset
+Follow dataset at [here](<dataset>).
+
+The traning data image of characters extracted from the number license plate. Characters [A-Z, 0-9] are divided into folders labeled with ASCII code. These images are used for training by the SVM module for recognition.
+
 ## Contact
 
 - Created by [@phamvantanh](https://www.facebook.com/phamvantanh12/) 
