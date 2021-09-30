@@ -2,7 +2,7 @@
 from PIL import Image
 from io import BytesIO
 import base64
-from Main1 import predict
+from MainPrediction import predict
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 import cv2

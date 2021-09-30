@@ -3,7 +3,14 @@
 <title>Python Flask API</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script type="text/javascript">// <![CDATA[
+    <script type="text/javascript">
+        function previewImage(event) {
+            const preview = document.getElementById('your-image');
+            preview.src = URL.createObjectURL(event.target.files[0]);
+				preview.style.display = "block";
+    }
+
+    // <![CDATA[
         function loading(){
             $("#loading").show();
             $("#content").hide();
@@ -29,15 +36,26 @@
 <div id="loading"></div>
 <div id="content">
     <h1>Upload and Predict Image</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <h3>{{ message }}</h3>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
     {% if filename %}
         <div>
             <img src="{{ url_for('display_image', filename=filename) }} " style="width:70%; height: 70%">
         </div>
     {% endif %}
-    <form method="post" enctype="multipart/form-data">
-      <input type="file" name="file1" class="form-control" autocomplete="off" required>
+     <div>
+			<img style="height:200px;width:200px;display:none" id="your-image"/>
+    </div>
+    <form method="post" enctype="multipart/form-data" onsubmit="loading()">
+      <input type="file" name="file" class="form-control" autocomplete="off" onchange="previewImage(event)" required>
         <br>
-      <input type="submit" value="Submit" class="btn btn-primary" onclick="loading()">
+      <input type="submit" value="Submit" class="btn btn-primary" >
     </form>
     {% if predict %}
                 <h2>{{ predict }}</h2>
